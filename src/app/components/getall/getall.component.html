@@ -1,5 +1,4 @@
 <h3>Liste des tâches : </h3>
-<div *ngFor="let t of liste">
-    <p>{{t.id ? (t.id+1) : 1}} | {{t.intitule}}</p>
-    <button>Details</button>
+<div *ngFor="let t of listeTaches">
+    <app-getall-item [item]="t" (suppr)="getAll()"></app-getall-item>
 </div>

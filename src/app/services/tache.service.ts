@@ -7,7 +7,7 @@ import { Tache } from '../models/tache.model';
 })
 export class TacheService {
 
-  private readonly _URL = "http://localhost:3000/taches";
+  private readonly _URL = "http://localhost:3000/taches/";
 
   constructor(private client: HttpClient) { }
 
@@ -17,5 +17,17 @@ export class TacheService {
 
   createTache(toCreate: Tache){
     return this.client.post<Tache>(this._URL, toCreate);
+  }
+
+  readTache(id: number){
+    return this.client.get<Tache>(this._URL+id);
+  }
+
+  updateTache(toUpdate: Tache){
+    return this.client.patch(this._URL+toUpdate.id, toUpdate);
+  }
+
+  deleteTache(id: number){
+    return this.client.delete(this._URL+id);
   }
 }

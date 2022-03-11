@@ -1,0 +1,11 @@
+<div *ngIf="tache">
+    <p>Id: {{tache.id}}</p>
+    <p>Intitulé: {{tache.intitule}}</p>
+    <p>Description: {{tache.description}}</p>
+    <p>Date debut: {{tache.dateCreation}}</p>
+    <p>Deadline: {{tache.deadline}}</p>
+    <p>Priorité: {{tache.priorite}}</p>
+</div>
+
+<button (click)="onRetourClick()">Retour</button>
+

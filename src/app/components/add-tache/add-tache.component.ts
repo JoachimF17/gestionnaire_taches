@@ -22,16 +22,26 @@ export class AddTacheComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(){
-    let tache: Tache = {
-      intitule: this.createForm.value.intitule,
-      description: this.createForm.value.description,
-      dateCreation: new Date(),
-      deadline: this.createForm.value.deadline,
-      priorite: this.createForm.value.priorite
-    }
+  onChange(){
+    if(this.tacheAjoutee)
+      this.tacheAjoutee = false;
+  }
 
-    this.service.createTache(tache).subscribe(() => this.tacheAjoutee = true);
+  onSubmit(){
+    if(this.createForm.valid){
+      let tache: Tache = {
+        intitule: this.createForm.value.intitule,
+        description: this.createForm.value.description,
+        dateCreation: new Date(),
+        deadline: new Date(this.createForm.value.deadline),
+        dateExecution: null,
+        priorite: this.createForm.value.priorite
+      }
+
+      this.service.createTache(tache).subscribe(() => this.tacheAjoutee = true);
+
+      this.createForm.reset();
+    }
   }
 
 }

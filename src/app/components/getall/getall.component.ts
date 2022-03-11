@@ -9,13 +9,17 @@ import { TacheService } from 'src/app/services/tache.service';
 })
 export class GetallComponent implements OnInit {
 
-  liste: Tache[] = [];
+  listeTaches: Tache[] = [];
 
   constructor(private service: TacheService) { 
-    service.getAllTaches().subscribe(taches => this.liste = taches);
+    this.getAll();
   }
 
   ngOnInit(): void {
+  }
+
+  getAll(){
+    this.service.getAllTaches().subscribe(taches => this.listeTaches = taches);
   }
 
 }
